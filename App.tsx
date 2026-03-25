@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useEffect} from 'react';
+import {StatusBar} from 'expo-status-bar';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import Toast from 'react-native-toast-message';
+import {AppNavigator} from './src/navigation/AppNavigator';
+import {getDeviceId} from "./src/util/deviceId";
+import {setSubId} from "./src/api/catApi";
+
+const queryClient = new QueryClient({
+    defaultOptions: {queries: {retry: 2, refetchOnWindowFocus: false}},
+});
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    useEffect(() => {
+        getDeviceId().then(setSubId);
+    }, []);
+
+    return (
+        <QueryClientProvider client={queryClient}>
+            <StatusBar style="light"/>
+            <AppNavigator/>
+            <Toast/>
+        </QueryClientProvider>
+    );
+}
