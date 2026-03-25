@@ -31,6 +31,16 @@ A React Native mobile app that lets you discover, upload, vote, and favourite ca
 
 ---
 
+## 📱 Screenshots
+
+<p align="center">
+  <img src="./assets/screenshots/01.png" width="200" alt="CatApp" />
+  <img src="./assets/screenshots/02.png" width="200" alt="CatApp" />
+  <img src="./assets/screenshots/03.png" width="200" alt="CatApp" />
+  <img src="./assets/screenshots/04.gif" width="200" alt="CatApp" />
+</p>
+
+
 ## Getting Started
 
 ### Prerequisites
